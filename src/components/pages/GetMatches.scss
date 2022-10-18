@@ -1,0 +1,24 @@
+ul{
+  list-style:none;
+  display:flex;
+  margin:0;
+  gap:20px;
+  padding:50px 0;
+  justify-content: center;
+  border: 2px black solid;
+  &:nth-child(even) {
+    background-color: #001f5b;
+    color: white;
+  }
+  &:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  li{
+    font-size: 20px;
+    text-transform: capitalize;
+    &:last-child::before{
+      content: '-';
+      padding-right: 15px;
+    }
+  }
+}

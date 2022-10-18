@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
-import TeamList from "./pages/TeamList";
+import TeamList from "./components/pages/TeamList";
 import { Route, Routes } from "react-router-dom";
-import Matches from "./pages/Matches";
 
 function App() {
   return (
