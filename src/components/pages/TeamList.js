@@ -64,10 +64,15 @@ export default function TeamList() {
             ))}
         </tbody>
       </table>
-      <div className={`menu ${openSection ? "active" : "inactive"}`}>
-        <GetMatches id={teamId} />
-      </div>
-      {!openSection && <div className="placeHolder">Trykk på tabellen for å få opp kommende kamper</div>}
+      {openSection ? (
+        <div className="menu">
+          <GetMatches id={teamId} />
+        </div>
+      ) : (
+        <div className="placeHolder">
+          Trykk på tabellen for å få opp kommende kamper
+        </div>
+      )}
     </div>
   );
 }
