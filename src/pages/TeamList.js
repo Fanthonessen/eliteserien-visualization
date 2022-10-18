@@ -1,45 +1,49 @@
 import React from "react";
-import { useQuery, gql } from '@apollo/client'
+import useTeamdata from "../hooks/UseTeamdata";
+import "./TeamList.css";
 
-var tournamentStageId = "4e50ba57-d5fe-4370-b2f8-e357ebeb4c83";
-const GET_TOURNAMENTSTAGE = gql`
-query table($tournamentStageId: ID!) {
-    tournamentStage(id: $tournamentStageId) {
-      name
-      standings(type: LEAGUE_TABLE) {
-        participants {
-          participant {
-            name
-          }
-          rank
-          data {
-            code
-            value
-          }
-        }
-      }
-    }
-  }
-`
+export default function TeamList() {
+  const { error, data, loading } = useTeamdata();
 
-export default function TeamList(){
+  return (
+    <div>
+      {loading && <div>Loading...</div>}
+      {error && <div>error</div>}
 
-    const {error, data, loading } = useQuery(GET_TOURNAMENTSTAGE, {
-        variables: {tournamentStageId}
-    });
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th> Team </th>
+            <th> Rank </th>
 
-    if(loading) return <div>Loading...</div>
-    if(error) return <div>Something went wrong :(</div>
-    console.log(data);
+            {data &&
+              data.tournamentStage.standings.map((x) =>
+                x.participants[0].data.map((z, idz) => (
+                  <th id={idz}>{z.code}</th>
+                ))
+              )}
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.tournamentStage.standings.map((x) =>
+              x.participants.map((y, idy) => (
+                <tr id={idy}>
+                  <th>
+                    <img src={y.participant.images[0].url}></img>
+                  </th>
+                  <th>{y.participant.name}</th>
+                  <th>{y.rank}</th>
 
-    return (
-      <div> {data.tournamentStage.standings.map(x => {
-        {x.participants.map(y => {
-          <div>
-            {y.rank}
-          </div>
-        })}
-      })}
-      </div>
-    )
+                  {y.data.map((z, idz) => (
+                    <th>{z.value}</th>
+                  ))}
+                </tr>
+              ))
+            )}
+        </tbody>
+      </table>
+    </div>
+  );
 }
