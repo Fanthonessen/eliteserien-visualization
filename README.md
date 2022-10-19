@@ -11,6 +11,16 @@ npm install @apollo-client gql
 To install sass for styling:
 npm install node-sass --save
 
+## Prerequisites for the application
+The application should show a table containing all teams from the current Eliteserien-2022.
+Image of logo, Name and Rank should come first in the table. 
+
+When clicking on a row, a menu of upcoming matches should appear and the application should auto-scroll down to it.
+The menu should only contain Eliteserien matches. 
+
+To open a menu for a different team, you have to press two times on a row for the next team. 
+This will close and re-open the menu.
+
 ## Available Scripts
 
 In the project directory, you can run:
