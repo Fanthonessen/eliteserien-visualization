@@ -6,10 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 I have installed some packages in this application
 
 To install apollo-client and GQL:
-npm install @apollo-client gql 
+`npm install @apollo-client gql` 
 
 To install sass for styling:
-npm install node-sass --save
+`npm install node-sass --save`
 
 ## Prerequisites for the application
 The application should show a table containing all teams from the current Eliteserien-2022.
