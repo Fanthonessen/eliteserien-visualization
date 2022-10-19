@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useRef } from "react";
 import useTeamdata from "../hooks/UseTeamdata";
 import "./TeamList.scss";
 import GetMatches from "./GetMatches";
@@ -7,8 +7,12 @@ export default function TeamList() {
   const [openSection, setOpenSection] = useState(false);
   const [teamId, setTeamId] = useState("");
   const { error, loading, data } = useTeamdata();
+
+  const scrollRef = useRef(null);
+
   function onOpen() {
     setOpenSection(!openSection);
+    scrollRef.current?.scrollIntoView({behavior: 'smooth'});
   }
   function onTeamId(val) {
     setTeamId(val);
@@ -69,9 +73,12 @@ export default function TeamList() {
           <GetMatches id={teamId} />
         </div>
       ) : (
+        <>
         <div className="placeHolder">
           Trykk på tabellen for å få opp kommende kamper
         </div>
+        <div ref={scrollRef} className="anchor"></div>
+        </>
       )}
     </div>
   );
