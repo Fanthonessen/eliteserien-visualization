@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Packages installed for this application
+I have installed some packages in this application
+
+To install apollo-client and GQL:
+npm install @apollo-client gql 
+
+To install sass for styling:
+npm install node-sass --save
+
 ## Available Scripts
 
 In the project directory, you can run:

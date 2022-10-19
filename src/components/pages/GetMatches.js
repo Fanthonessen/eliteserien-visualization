@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React from "react";
 import useMatches from "../hooks/UseMatches";
 import "./GetMatches.scss";
 
@@ -9,7 +9,7 @@ export default function GetMatches(props) {
   var day = date.toLocaleString("default", { day: "2-digit" });
   var fromDate = year + "-" + month + "-" + day;
   const toDate = "2022-12-29";
-  const [openSection, setOpenSection] = useState(false);
+//   const [openSection, setOpenSection] = useState(false);
   const { data } = useMatches(props.id, fromDate, toDate);
 
   return (
