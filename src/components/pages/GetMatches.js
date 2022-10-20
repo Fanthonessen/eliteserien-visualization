@@ -5,8 +5,8 @@ import "./GetMatches.scss";
 export default function GetMatches(props) {
   const date = new Date();
   var year = date.toLocaleString("default", { year: "numeric" });
-  var month = date.toLocaleString("default", { month: "2-digit" });
-  var day = date.toLocaleString("default", { day: "2-digit" });
+  var month = date.toLocaleString("default", { month: "2-digit" }).replace(".","");
+  var day = date.toLocaleString("default", { day: "2-digit" }).replace(".","");
   var fromDate = year + "-" + month + "-" + day;
   const toDate = "2022-12-29";
   //   const [openSection, setOpenSection] = useState(false);
@@ -17,7 +17,7 @@ export default function GetMatches(props) {
       {data &&
         data.eventsByParticipantAndDateRange.map(
           (x) =>
-            x.tournamentStage.name == "Eliteserien" && (
+            x.tournamentStage.name === "Eliteserien" && (
               <ul>
                 <li>{x.startDate}</li>
                 <li>{x.tournamentStage.name}</li>
